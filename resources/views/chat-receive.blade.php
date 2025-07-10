@@ -5,9 +5,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Receiver Chat</title>
     @vite(['resources/js/app.js']) 
+
+    <script>
+        window.authUser = @json(Auth::user());
+    </script>
 </head>
 <body>
-    <h2>User-2</h2>
+    <h2>{{ Auth::user()->name }}</h2>
 
     <input type="text" id="messageInput" placeholder="Type your reply...">
     <button id="sendBtn">Send</button>

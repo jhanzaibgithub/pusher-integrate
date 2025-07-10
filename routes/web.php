@@ -1,19 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
-use App\Events\MessageSent;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\HomeController;
 
 
-Route::get('/', function () {
-    return view('chat');
+Auth::routes();
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::view('/chat-receive', 'chat-receive');
+    Route::post('/send-message', [ChatController::class, 'sendMessage']);
+
 });
-Route::view('/chat-receive', 'chat-receive');
-Route::post('/send-message', function (Request $request) {
-    $message = $request->input('message');
-    $from = $request->input('from');
 
-    broadcast(new MessageSent($message, $from))->toOthers();
 
-    return response()->json(['status' => 'Message Sent']);
-});
