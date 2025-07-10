@@ -6,12 +6,9 @@
     <title>Chat</title>
     @vite(['resources/js/app.js'])
 
-    <script>
-        window.authUser = @json(Auth::user());
-    </script>
 </head>
 <body>
-    <h2>{{ Auth::user()->name }}</h2>
+    <h2>{{ $user->name }}</h2>
 
     <input type="text" id="messageInput" placeholder="Type your message...">
     <button id="sendBtn">Send</button>

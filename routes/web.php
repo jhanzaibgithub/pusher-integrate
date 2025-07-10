@@ -9,7 +9,7 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::view('/chat-receive', 'chat-receive');
+        Route::get('/chat-receive', [HomeController::class, 'chatReceiver']);
     Route::post('/send-message', [ChatController::class, 'sendMessage']);
 
 });
