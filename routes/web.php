@@ -4,6 +4,11 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Events\MessageSent;
 
+
+Route::get('/', function () {
+    return view('chat');
+});
+Route::view('/chat-receive', 'chat-receive');
 Route::post('/send-message', function (Request $request) {
     $message = $request->input('message');
     $from = $request->input('from');
@@ -12,8 +17,3 @@ Route::post('/send-message', function (Request $request) {
 
     return response()->json(['status' => 'Message Sent']);
 });
-
-Route::get('/', function () {
-    return view('chat');
-});
-Route::view('/chat-receive', 'chat-receive');
