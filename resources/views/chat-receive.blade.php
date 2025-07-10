@@ -7,7 +7,7 @@
     @vite(['resources/js/app.js']) 
 </head>
 <body>
-    <h2>Receiver</h2>
+    <h2>User-2</h2>
 
     <input type="text" id="messageInput" placeholder="Type your reply...">
     <button id="sendBtn">Send</button>
